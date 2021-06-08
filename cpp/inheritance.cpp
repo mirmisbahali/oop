@@ -9,9 +9,10 @@ class AbstractEmployee {
 
 class Employee:AbstractEmployee {
 private:
-    string Name;
     string Company;
     int Age;
+protected:
+    string Name;
 public:
 
     void setName(string name) {
@@ -56,7 +57,7 @@ public:
     }
 };
 
-class Developer: Employee {
+class Developer:public Employee {
 public:
     string FavProgLang;
 
@@ -67,8 +68,22 @@ public:
     }
 
     void FixBug() {
-        cout << getName() << " fixed bug using " << FavProgLang << endl;
+        cout << Name << " fixed bug using " << FavProgLang << endl;
     }
+};
+
+class Teacher:public Employee {
+public:
+    string Subject;
+    void PrepareLsson() {
+        cout << Name << " is preparing " << Subject << " lesson " << endl;
+    }
+
+    Teacher(string name, string company, int age, string subject)
+        :Employee(name, company, age)
+        {
+            Subject = subject;
+        }
 };
 
 int main(void)
@@ -76,8 +91,10 @@ int main(void)
     Employee employee1 = Employee("Mark", "boringcompany", 30);
     Employee employee2 = Employee("John", "amazon", 32);
     Developer d = Developer("Steve", "youtube", 25, "C++");
+    Teacher t = Teacher("Jack", "Cool School", 35, "History");
 
-    d.FixBug();
+    t.PrepareLsson();
+    t.AskForPromotion();
 
     return 0;
 }
