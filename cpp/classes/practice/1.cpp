@@ -1,7 +1,7 @@
 #include <iostream>
 
 class Student {
-private:
+public:
     std::string name;
     int roll_no;
 public:
@@ -22,18 +22,11 @@ public:
     }
 };
 
-class Identity:public Student {
-private:
-    int ph_no;
-    std::string address;
-public:
-    
-};
-
 int main(void) {
     Student s1("John", 20);
     Student s2;
     Student s3;
+
 
     s2.setName("Mark");
     s2.setRollNo(40);
@@ -44,5 +37,6 @@ int main(void) {
     s1.details();
     s2.details();
     s3.details();
+
     return 0;
 }
